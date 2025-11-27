@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fayaz Terminal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">fayaz@terminal:~</span>
+        </div>
+
+        <div class="terminal-body">
+            <div id="terminal-output"></div>
+
+            <div id="terminal-input-line">
+                <span class="prompt">fayaz@terminal:~$</span>
+                <span id="cursor">█</span>
+            </div>
+        </div>
+    </div>
+    <!-- SOCIALA IKONER PÅ VÄNSTER SIDA -->
+    <div class="social-sidebar">
+        <a href="https://www.linkedin.com/in/fayaz-saiedi-79a381219" target="_blank" class="social-icon">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
+        </a>
+
+        <a href="https://www.instagram.com/fayaz.saiedi/" target="_blank" class="social-icon">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram">
+        </a>
+
+        <a href="https://github.com/FayazSaiedi" target="_blank" class="social-icon">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="Github">
+        </a>
+    </div>
+
+
+    <script>
+        const lines = [
+            'fayaz@terminal:~$ whoami',
+            'Name: Fayaz Saiedi',
+            'Role: Computer Science student (Datavetare)',
+            'Interests: Web development, technology, programming',
+            '',
+            'fayaz@terminal:~$ blog',
+            'Welcome to my personal terminal-style page.',
+            'Here I will later share thoughts about tech, code, and projects.',
+            '',
+            'fayaz@terminal:~$ socials',
+            'LinkedIn : <a href="https://www.linkedin.com/in/fayaz-saiedi-79a381219" target="_blank">linkedin.com/in/fayaz-saiedi-79a381219</a>',
+            'Instagram: <a href="https://www.instagram.com/fayaz.saiedi/" target="_blank">@fayaz.saiedi</a>',
+            'GitHub   : <a href="https://github.com/FayazSaiedi" target="_blank">github.com/FayazSaiedi</a>',
+            '',
+            'fayaz@terminal:~$'
+        ];
+
+        const output = document.getElementById('terminal-output');
+        const cursor = document.getElementById('cursor');
+        const inputLine = document.getElementById('terminal-input-line');
+
+        let lineIndex = 0;
+
+        function printNextLine() {
+            if (lineIndex < lines.length) {
+                const line = document.createElement('div');
+                line.classList.add('line');
+                line.innerHTML = lines[lineIndex];
+                output.appendChild(line);
+                output.scrollTop = output.scrollHeight;
+                lineIndex++;
+                setTimeout(printNextLine, 400); // tid mellan rader
+            } else {
+                // flytta prompten till sista raden när allt är utskrivet
+                inputLine.style.display = 'flex';
+            }
+        }
+
+        // göm input-line tills vi är klara
+        inputLine.style.display = 'none';
+        printNextLine();
+    </script>
+</body>
+</html>
