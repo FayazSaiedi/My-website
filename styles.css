@@ -167,3 +167,34 @@ a:hover {
     height: 40px;
     filter: invert(70%) sepia(100%) saturate(300%) hue-rotate(90deg);
 }
+/* -------------------------------
+   MOBILANPASSNING (små skärmar)
+-------------------------------- */
+@media (max-width: 768px) {
+
+    /* flytta ikonerna till nederkant och gör dem i rad */
+    .social-sidebar {
+        top: auto;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        gap: 14px;
+    }
+
+    .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-icon img {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* terminalfönstret får lite mer marginal så det inte krockar med ikonerna */
+    .terminal-window {
+        height: 78vh;
+    }
+}
+
